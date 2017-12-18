@@ -12,8 +12,16 @@ public interface MyList {
 	 * @since 16 Dec, 2017
 	 * @param o
 	 * @return
-	 * method to add elements to MyList
+	 * method to add element to MyList
 	 */
 	boolean add(Object o);
+	
+	/**
+	 * @author Prasad
+	 * @since 17 Dec, 2017
+	 * @return
+	 * method to remove element from MyList
+	 */
+	Object remove();
 
 }

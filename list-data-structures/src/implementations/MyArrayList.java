@@ -32,17 +32,21 @@ public class MyArrayList implements MyList {
 	@Override
 	public boolean add(Object o) {
 		
-		if(this.capacity > this.size && o.getClass().toString().equals(this.classType)) {
+		if(o.getClass().toString().equals(this.classType)) {
 			
-			myArrayListOfObjects[this.size] = o;
-			this.size++;
-			return true;
-			
-		} else if(this.capacity == this.size && o.getClass().toString().equals(this.classType)) {
-			
-			this.capacity *= 2;
-			copyToNewMyArrayListOfObjects(this.myArrayListOfObjects, this.capacity);
-			add(o);
+			if(this.capacity > this.size) {
+				
+				myArrayListOfObjects[this.size] = o;
+				this.size++;
+				return true;
+				
+			} else if(this.capacity == this.size) {
+				
+				this.capacity *= 2;
+				copyToNewMyArrayListOfObjects(this.myArrayListOfObjects, this.capacity);
+				add(o);
+				
+			}
 			
 		}
 		
@@ -67,6 +71,23 @@ public class MyArrayList implements MyList {
 		}
 		
 		setMyArrayListOfObjects(myArrayListOfObjectsNew);
+		
+	}
+	
+	/* (non-Javadoc)
+	 * @see interfaces.MyList#remove()
+	 */
+	@Override
+	public Object remove() {
+		
+		if(this.size > 0) {
+			
+			this.size--;
+			return this.myArrayListOfObjects[size];
+			
+		}
+		
+		return null;
 		
 	}
 
